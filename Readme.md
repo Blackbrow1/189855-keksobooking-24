@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Александр Чернобров](https://up.htmlacademy.ru/javascript/24/user/189855).
-* Наставник: `Неизвестно`.
+* Наставник: [Егор Дьяченко](https://htmlacademy.ru/profile/semperhomolupus).
 
 ---
 
