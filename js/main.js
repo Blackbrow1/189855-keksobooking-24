@@ -17,7 +17,7 @@ function createObject() {
     },
 
     offer: {
-      tytle: getRandomArrayElement(TITLES),
+      title: getRandomArrayElement(TITLES),
       address: `${lat}, ${lng}`,
       price: getRandomIntInclusive(200, 3000),
       type: getRandomArrayElement(TYPES),
@@ -46,6 +46,4 @@ for (let i = 1; i <= 10; i++) {
   objects.push(newObject);
 }
 
-const div = document.querySelector('div');
-div.innerText = JSON.stringify(objects);
-console.log(objects); // Временный вызов функции в консоль
+export {objects};
