@@ -1,44 +1,48 @@
-import {objects} from './main.js';
-
 const popupTemplate = document.querySelector('#card').content.querySelector('.popup');
 const template = popupTemplate.cloneNode(true);
-const popupTitle = template.querySelector('.popup__title');
-
 const objectFirst = objects[0];
-popupTitle.textContent = objectFirst.offer.title;
 
-const popupTextAddress = template.querySelector('.popup__text--address');
-popupTextAddress.textContent = objectFirst.offer.address;
+const generatingSimilarElements = function () {
+  const popupTitle = template.querySelector('.popup__title');
+  popupTitle.textContent = objectFirst.offer.title;
 
-const popupTextPrice = template.querySelector('.popup__text--price');
-popupTextPrice.textContent = objectFirst.offer.price;
+  const popupTextAddress = template.querySelector('.popup__text--address');
+  popupTextAddress.textContent = objectFirst.offer.address;
 
-const popupType = template.querySelector('.popup__type');
-popupType.textContent = objectFirst.offer.type;
+  const popupTextPrice = template.querySelector('.popup__text--price');
+  popupTextPrice.textContent = objectFirst.offer.price;
 
-const popupTextRoom = template.querySelector('.poput__text--rooms');
-popupTextRoom.textContent = objectFirst.offer.rooms;
+  const popupType = template.querySelector('.popup__type');
+  popupType.textContent = objectFirst.offer.type;
 
-const popupTextGuests = template.querySelector('.popup__text--guests');
-popupTextGuests.textContent = objectFirst.offer.guests;
+  const popupTextRoom = template.querySelector('.poput__text--rooms');
+  popupTextRoom.textContent = objectFirst.offer.rooms;
 
-const popupTextCheckout = template.querySelector('.popup__text--checkout');
-popupTextCheckout.textContent = objectFirst.offer.checkout;
+  const popupTextGuests = template.querySelector('.popup__text--guests');
+  popupTextGuests.textContent = objectFirst.offer.guests;
 
-const popupTextCheckin = template.querySelector('.popup__text--checkin');
-popupTextCheckin.textContent = objectFirst.offer.checkin;
+  const popupTextCheckout = template.querySelector('.popup__text--checkout');
+  popupTextCheckout.textContent = objectFirst.offer.checkout;
 
-const popupFeatures = template.querySelector('.popup__features');
-popupFeatures.textContent = objectFirst.offer.features;
+  const popupTextCheckin = template.querySelector('.popup__text--checkin');
+  popupTextCheckin.textContent = objectFirst.offer.checkin;
 
-const popupDescription = template.querySelector('.popup__description');
-popupDescription.textContent = objectFirst.offer.description;
+  const popupFeatures = template.querySelector('.popup__features');
+  popupFeatures.textContent = objectFirst.offer.features;
 
-const popupPhotos = template.querySelector('.popup__photos');
-popupPhotos.src = objectFirst.offer.photos;
+  const popupDescription = template.querySelector('.popup__description');
+  popupDescription.textContent = objectFirst.offer.description;
 
-const popupAvatar = template.querySelector('.popup__avatar');
-popupAvatar.src = objectFirst.author.avatar;
+  const popupPhotos = template.querySelector('.popup__photos');
+  popupPhotos.src = objectFirst.offer.photos;
 
-const mapCanvas = document.querySelector('#map-canvas');
-mapCanvas.appendChild(template);
+  const popupAvatar = template.querySelector('.popup__avatar');
+  popupAvatar.src = objectFirst.author.avatar;
+
+  const mapCanvas = document.querySelector('#map-canvas');
+  mapCanvas.appendChild(template);
+};
+
+generatingSimilarElements();
+
+export {generatingSimilarElements};
