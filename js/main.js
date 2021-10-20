@@ -48,5 +48,3 @@ for (let i = 1; i <= 10; i++) {
 }
 
 generatingSimilarElements(objects[0]);
-
-export {objects};
