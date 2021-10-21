@@ -1,5 +1,6 @@
 import {getRandomIntInclusive, getRandomArbitrary} from './util.js';
 import {TITLES, TYPES, CHECKINS, CHECKOUTS, FEATURES, DESCRIPTIONS, PHOTOS} from './data.js';
+import {generatingSimilarElements} from './generating-similar-elements.js';
 
 const getRandomArrayElement = (elements) => {
   return elements[getRandomIntInclusive(0, elements.length - 1)];
@@ -17,7 +18,7 @@ function createObject() {
     },
 
     offer: {
-      tytle: getRandomArrayElement(TITLES),
+      title: getRandomArrayElement(TITLES),
       address: `${lat}, ${lng}`,
       price: getRandomIntInclusive(200, 3000),
       type: getRandomArrayElement(TYPES),
@@ -46,6 +47,4 @@ for (let i = 1; i <= 10; i++) {
   objects.push(newObject);
 }
 
-const div = document.querySelector('div');
-div.innerText = JSON.stringify(objects);
-console.log(objects); // Временный вызов функции в консоль
+generatingSimilarElements(objects[0]);
