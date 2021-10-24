@@ -30,7 +30,7 @@ priceValue.addEventListener('input', () => {
 
   if (priceValueNumber < MAX_PRICE) {
     priceValue.setCustomValidity(`Ещё ${MAX_PRICE - priceValueNumber} симв.`);
-  } else if (priceValue < MIN_PRICE) {
+  } else if (priceValueNumber < MIN_PRICE) {
     priceValue.setCustomValidity('Сумма не может быть меньше 0');
   } else {
     priceValue.setCustomValidity('');
@@ -42,15 +42,21 @@ priceValue.addEventListener('input', () => {
 //rooms
 
 const roomNumber = document.querySelector('#room_number');
-const capacity = document.querySelector('#capacity');
+const bedNumber = document.querySelector('#capacity');
 
-roomNumber.addEventListener('input', () => {
-  const roomNumberValue = roomNumber.value;
-  const capacityValue = capacity.value;
-
-  if (roomNumberValue === roomNumberValue[1]) {
-    capacityValue.textContent = capacityValue[1];
+const changeRoomBedNumber = () => {
+  let textMessage = '';
+  const bedValue = bedNumber.value;
+  const roomValue = roomNumber.value;
+  if ( roomValue !== '100' && (bedValue > roomValue || bedValue === '0')) {
+    textMessage =`Доступны комнаты для не менее 1 и не более ${roomValue} гостей`;
+  } else if (roomValue === '100' && bedValue !== '0') {
+    textMessage = 'Эти комнаты  не для гостей';
   }
+  bedNumber.setCustomValidity(textMessage);
+  bedNumber.reportValidity();
+  return !textMessage;
+};
 
-  priceValue.reportValidity();
-});
+roomNumber.addEventListener('change', changeRoomBedNumber);
+bedNumber.addEventListener('change', changeRoomBedNumber);
