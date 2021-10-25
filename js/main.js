@@ -1,6 +1,7 @@
 import {getRandomIntInclusive, getRandomArbitrary} from './util.js';
 import {TITLES, TYPES, CHECKINS, CHECKOUTS, FEATURES, DESCRIPTIONS, PHOTOS} from './data.js';
 import {generatingSimilarElements} from './generating-similar-elements.js';
+import './form.js';
 
 const getRandomArrayElement = (elements) => {
   return elements[getRandomIntInclusive(0, elements.length - 1)];
