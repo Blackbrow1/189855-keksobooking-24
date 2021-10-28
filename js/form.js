@@ -28,10 +28,10 @@ const priceValue = document.querySelector('#price');
 priceValue.addEventListener('input', () => {
   const priceValueNumber = priceValue.value;
 
-  if (priceValueNumber < MAX_PRICE) {
-    priceValue.setCustomValidity(`Ещё ${MAX_PRICE - priceValueNumber} симв.`);
-  } else if (priceValueNumber < MIN_PRICE) {
+  if (priceValueNumber < MIN_PRICE) {
     priceValue.setCustomValidity('Сумма не может быть меньше 0');
+  } else if (priceValueNumber > MAX_PRICE) {
+    priceValue.setCustomValidity('Сумма не может быть больше 1000000');
   } else {
     priceValue.setCustomValidity('');
   }
@@ -60,3 +60,65 @@ const changeRoomBedNumber = () => {
 
 roomNumber.addEventListener('change', changeRoomBedNumber);
 bedNumber.addEventListener('change', changeRoomBedNumber);
+
+// form active / not active
+
+const adForm = document.querySelector('.ad-form');
+const adFormHeader = adForm.querySelector('.ad-form-header');
+const adFormElement = adForm.querySelector('.ad-form__element');
+const mapFilters = document.querySelector('.map__filters');
+const mapFiltersSelect = mapFilters.querySelector('select');
+const mapFiltersFieldset = mapFilters.querySelector('fieldset');
+
+
+const blockForm = () => {
+  adForm.classList.add('ad-form--disabled');
+  adFormHeader.disabled = true;
+  adFormElement.disabled = true;
+  mapFilters.classList.add('ad-form--disabled');
+  mapFiltersSelect.disabled = true;
+  mapFiltersFieldset.disabled = true;
+};
+
+blockForm();
+
+// map
+
+const map = L.map('map-canvas')
+  .on('load', () => {
+    adForm.classList.remove('ad-form--disabled');
+    adFormHeader.disabled = false;
+    adFormElement.disabled = false;
+    mapFilters.classList.remove('ad-form--disabled');
+    mapFiltersSelect.disabled = false;
+    mapFiltersFieldset.disabled = false;
+  })
+  .setView({
+    lat: 35.6895,
+    lng: 139.692,
+  }, 10);
+
+L.tileLayer(
+  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  },
+).addTo(map);
+
+const marker = L.marker(
+  {
+    lat: 35.6895,
+    lng: 139.692,
+  },
+  {
+    draggable: true,
+  },
+);
+
+marker.addTo(map);
+
+marker.on('moveend', (evt) => {
+  console.log(evt.target.getLatLng());
+});
+
+
