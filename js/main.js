@@ -1,7 +1,6 @@
 import {getRandomIntInclusive, getRandomArbitrary} from './util.js';
 import {TITLES, TYPES, CHECKINS, CHECKOUTS, FEATURES, DESCRIPTIONS, PHOTOS} from './data.js';
-import {generatingSimilarElements} from './generating-similar-elements.js';
-import './form.js';
+import {createMarkers} from './form.js';
 
 const getRandomArrayElement = (elements) => {
   return elements[getRandomIntInclusive(0, elements.length - 1)];
@@ -48,4 +47,4 @@ for (let i = 1; i <= 10; i++) {
   objects.push(newObject);
 }
 
-generatingSimilarElements(objects[0]);
+createMarkers(objects);
