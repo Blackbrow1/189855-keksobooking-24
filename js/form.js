@@ -82,43 +82,4 @@ const blockForm = () => {
 
 blockForm();
 
-// map
-
-const map = L.map('map-canvas')
-  .on('load', () => {
-    adForm.classList.remove('ad-form--disabled');
-    adFormHeader.disabled = false;
-    adFormElement.disabled = false;
-    mapFilters.classList.remove('ad-form--disabled');
-    mapFiltersSelect.disabled = false;
-    mapFiltersFieldset.disabled = false;
-  })
-  .setView({
-    lat: 35.6895,
-    lng: 139.692,
-  }, 10);
-
-L.tileLayer(
-  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-  {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  },
-).addTo(map);
-
-const marker = L.marker(
-  {
-    lat: 35.6895,
-    lng: 139.692,
-  },
-  {
-    draggable: true,
-  },
-);
-
-marker.addTo(map);
-
-marker.on('moveend', (evt) => {
-  console.log(evt.target.getLatLng());
-});
-
-
+export {adForm, adFormHeader, adFormElement, mapFilters, mapFiltersSelect, mapFiltersFieldset};

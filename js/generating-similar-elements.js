@@ -40,6 +40,8 @@ const generatingSimilarElements = function(advert) {
 
   const mapCanvas = document.querySelector('#map-canvas');
   mapCanvas.appendChild(template);
+
+  return template;
 };
 
 export {generatingSimilarElements};
