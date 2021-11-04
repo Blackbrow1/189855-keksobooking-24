@@ -82,4 +82,29 @@ const blockForm = () => {
 
 blockForm();
 
+const setUserFormSubmit = (onSuccess) => {
+  adForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    const formData = new FormData(evt.target);
+
+    fetch(
+      'https://24.javascript.pages.academy/404',
+      {
+        method: 'POST',
+        body: formData,
+      },
+    ).then((response) => {
+      if (response.ok) {
+        onSuccess();
+      } else {
+        showAlert('Не удалось отправить форму. Попробуйте ещё раз');
+      }
+    })
+      .catch(() => {
+        showAlert('Не удалось отправить форму. Попробуйте ещё раз');
+      });
+  });
+};
+
 export {adForm, adFormHeader, adFormElement, mapFilters, mapFiltersSelect, mapFiltersFieldset};
