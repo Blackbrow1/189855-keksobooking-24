@@ -1,3 +1,5 @@
+import { showAlert } from './util.js';
+
 // title
 
 const MIN_TITLE_LENGTH = 30;
@@ -82,6 +84,10 @@ const blockForm = () => {
 
 blockForm();
 
+function closeForm () {
+  adForm.classList.add('ad-form--disabled');
+}
+
 const setUserFormSubmit = (onSuccess) => {
   adForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -89,7 +95,7 @@ const setUserFormSubmit = (onSuccess) => {
     const formData = new FormData(evt.target);
 
     fetch(
-      'https://24.javascript.pages.academy/404',
+      'https://24.javascript.pages.academy/keksobooking',
       {
         method: 'POST',
         body: formData,
@@ -107,4 +113,4 @@ const setUserFormSubmit = (onSuccess) => {
   });
 };
 
-export {adForm, adFormHeader, adFormElement, mapFilters, mapFiltersSelect, mapFiltersFieldset};
+export {adForm, adFormHeader, adFormElement, mapFilters, mapFiltersSelect, mapFiltersFieldset, closeForm, setUserFormSubmit};

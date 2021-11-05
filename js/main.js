@@ -2,6 +2,8 @@ import {getRandomIntInclusive, getRandomArbitrary} from './util.js';
 import {TITLES, TYPES, CHECKINS, CHECKOUTS, FEATURES, DESCRIPTIONS, PHOTOS} from './data.js';
 import {createMarkers} from './map.js';
 import './form.js';
+import { setUserFormSubmit } from './form.js';
+import { closeForm } from './form.js';
 
 const getRandomArrayElement = (elements) => {
   return elements[getRandomIntInclusive(0, elements.length - 1)];
@@ -57,3 +59,5 @@ fetch('https://24.javascript.pages.academy/keksobooking/data')
   .then((adsNearby) => {
     createMarkers(adsNearby.slice(0, ADS_NEARBY_COUNT));
   });
+
+setUserFormSubmit(closeForm);
