@@ -1,4 +1,5 @@
 import { showAlert } from './util.js';
+import {mainPinIcon} from './map.js';
 
 // title
 
@@ -85,7 +86,11 @@ const blockForm = () => {
 blockForm();
 
 function closeForm () {
-  adForm.classList.add('ad-form--disabled');
+  titleAdvert.value = '';
+  mainPinIcon.setLatLng({
+    lat: 35.6895,
+    lng: 139.692,
+  });
 }
 
 const setUserFormSubmit = (onSuccess) => {

@@ -4,6 +4,8 @@ import {createMarkers} from './map.js';
 import './form.js';
 import { setUserFormSubmit } from './form.js';
 import { closeForm } from './form.js';
+import {marker} from './map.js';
+import './util.js';
 
 const getRandomArrayElement = (elements) => {
   return elements[getRandomIntInclusive(0, elements.length - 1)];
@@ -61,3 +63,8 @@ fetch('https://24.javascript.pages.academy/keksobooking/data')
   });
 
 setUserFormSubmit(closeForm);
+
+marker.on('moveend', (evt) => {
+  const address = document.querySelector('#address');
+  address.value = evt.target.getLatLng();
+});

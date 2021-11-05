@@ -71,4 +71,4 @@ const createMarkers = (objects) => {
   });
 };
 
-export {createMarkers};
+export {createMarkers, marker, mainPinIcon};

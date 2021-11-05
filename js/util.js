@@ -25,28 +25,19 @@ function getRandomArbitrary(min, max) {
 
 getRandomArbitrary(1, 10);
 
-const ALERT_SHOW_TIME = 5000;
+const errorMessage = document.querySelector('#error');
+const alertContainer = document.createElement('div');
 
-const showAlert = (message) => {
-  const alertContainer = document.createElement('div');
-  alertContainer.style.zIndex = 100;
-  alertContainer.style.position = 'absolute';
-  alertContainer.style.left = 0;
-  alertContainer.style.top = '1300px';
-  alertContainer.style.right = 0;
-  alertContainer.style.padding = '20px 3px';
-  alertContainer.style.fontSize = '30px';
-  alertContainer.style.textAlign = 'center';
-  alertContainer.style.backgroundColor = 'red';
-
-  alertContainer.textContent = message;
+const showAlert = () => {
+  alertContainer.append(errorMessage.content.cloneNode(true));
 
   document.body.append(alertContainer);
-
-  setTimeout(() => {
-    alertContainer.remove();
-  }, ALERT_SHOW_TIME);
 };
 
+// const errorButton = document.querySelector('.error__button');
+
+// errorButton.addEventListener('click', () => {
+//   document.body.remove(alertContainer);
+// });
 
 export {getRandomIntInclusive, getRandomArbitrary, showAlert};
